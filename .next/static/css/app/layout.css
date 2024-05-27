@@ -848,6 +848,9 @@ video {
 .pr-8 {
   padding-right: 2rem;
 }
+.pb-\[6px\] {
+  padding-bottom: 6px;
+}
 .text-center {
   text-align: center;
 }
@@ -1035,6 +1038,11 @@ video {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 /* ===== TYPOGRAPHY */
 /* 44 */
@@ -1415,6 +1423,65 @@ video {
   }
 }
 /* TransformedImage Component */
+.download-btn {
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 120%;
+}
+.transformed-image {
+  height: fit-content;
+  min-height: 18rem;
+  width: 100%;
+  border-radius: 10px;
+  border-width: 1px;
+  border-style: dashed;
+  background-color: rgb(244 247 254 / 0.2);
+  object-fit: cover;
+  padding: 0.5rem;
+}
+.transforming-loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  height: 100%;
+  --tw-translate-x: -50%;
+  --tw-translate-y: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  flex-direction: column;
+  gap: 0.5rem;
+  border-radius: 10px;
+  border-width: 1px;
+  background-color: rgb(56 66 98 / 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.transformed-placeholder {
+  height: 100%;
+  min-height: 18rem;
+  flex-direction: column;
+  gap: 1.25rem;
+  border-radius: 16px;
+  border-width: 1px;
+  border-style: dashed;
+  background-color: rgb(244 247 254 / 0.2);
+  --tw-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+  --tw-shadow-colored: inset 0 2px 4px 0 var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 120%;
+}
 
 .auth {
   min-height: 100vh;

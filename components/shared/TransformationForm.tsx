@@ -27,6 +27,7 @@ import { CustomField } from "./CustomField"
 import { AspectRatioKey, debounce, deepMergeObjects } from "@/lib/utils"
 import { updateCredits } from "@/lib/actions/user.actions"
 import MediaUploader from "./MediaUploader"
+import TransformedImage from "./TransformedImage"
 
 export const formSchema = z.object({
     title: z.string(),
@@ -41,11 +42,11 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
 
     const transformationType = transformationTypes[type];
     const [image, setImage] = useState(data);
-    const [newTransformation, setnewTransformation] = useState<Transformations | null>(null);
+    const [newTransformation, setNewTransformation] = useState<Transformations | null>(null);
 
-    const [isSubmitting, setisSubmitting] = useState(false);
-    const [isTransforming, setisTransforming] = useState(false);
-    const [transformationConfig, settransformationConfig] = useState(config)
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isTransforming, setIsTransforming] = useState(false);
+    const [transformationConfig, setTransformationConfig] = useState(config)
 
     const [isPending, startTransition] = useTransition()
 
@@ -75,13 +76,13 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
             width: imageSize.width,
             height: imageSize.height,
         }))
-        setnewTransformation(transformationType.config);
+        setNewTransformation(transformationType.config);
         return onChangeField(value);
     }
 
     const onInputChangeHandler = (fieldName: string, value: string, type: string, onChangeField: (value: string) => void) => {
         debounce(() => {
-            setnewTransformation((prevState: any) => ({
+            setNewTransformation((prevState: any) => ({
                 ...prevState,
                 [type]: {
                     ...prevState?.[type],
@@ -93,15 +94,15 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
         return onChangeField(value)
     }
 
-    // Todo: return to updateCredits
+    // Todo: Update creditFee to something else if needed
     const onTransformHandler = async () => {
-        setisTransforming(true)
-        settransformationConfig(
+        setIsTransforming(true)
+        setTransformationConfig(
             deepMergeObjects(newTransformation, transformationConfig)
         )
-        setnewTransformation(null)
+        setNewTransformation(null)
         startTransition(async () => {
-            // await updateCredits(userId, creditFee)
+            await updateCredits(userId, -1)
         })
     }
 
@@ -193,17 +194,24 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
                         control={form.control}
                         name="publicId"
                         className="flex size-full flex-col"
-                        render={({field})=>(
+                        render={({ field }) => (
                             <MediaUploader
-                                onValueChange = {field.onChange}
-                                setImage = {setImage}
-                                publicId = {field.value}
-                                image = {image}
-                                type = {type}
+                                onValueChange={field.onChange}
+                                setImage={setImage}
+                                publicId={field.value}
+                                image={image}
+                                type={type}
                             />
                         )}
                     />
-
+                    <TransformedImage
+                        image={image}
+                        type={type}
+                        title={form.getValues().title}
+                        isTransforming={isTransforming}
+                        setIsTransforming={setIsTransforming}
+                        transformationConfig={transformationConfig}
+                    />
                 </div>
                 <div className="flex flex-col gap-4">
                     <Button
