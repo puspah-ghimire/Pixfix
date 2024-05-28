@@ -1,9 +1,9 @@
 {
   "pages": {
-    "/(root)/transformations/add/[type]/page": [
+    "/(root)/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(root)/transformations/add/[type]/page.js"
+      "static/chunks/app/(root)/page.js"
     ],
     "/(root)/layout": [
       "static/chunks/webpack.js",
@@ -16,10 +16,25 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/(root)/page": [
+    "/(root)/transformations/add/[type]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(root)/page.js"
+      "static/chunks/app/(root)/transformations/add/[type]/page.js"
+    ],
+    "/(root)/transformations/[id]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(root)/transformations/[id]/page.js"
+    ],
+    "/(root)/credits/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(root)/credits/page.js"
+    ],
+    "/_not-found/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/_not-found/page.js"
     ]
   }
 }
