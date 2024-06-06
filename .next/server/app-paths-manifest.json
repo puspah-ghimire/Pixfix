@@ -1,6 +1,6 @@
 {
+  "/favicon.ico/route": "app/favicon.ico/route.js",
   "/(root)/page": "app/(root)/page.js",
-  "/(root)/transformations/[id]/page": "app/(root)/transformations/[id]/page.js",
-  "/(root)/transformations/add/[type]/page": "app/(root)/transformations/add/[type]/page.js",
-  "/(root)/transformations/[id]/update/page": "app/(root)/transformations/[id]/update/page.js"
+  "/(root)/credits/page": "app/(root)/credits/page.js",
+  "/(root)/profile/page": "app/(root)/profile/page.js"
 }
