@@ -20,6 +20,11 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/(root)/transformations/[id]/page.js"
+    ],
+    "/(root)/transformations/add/[type]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(root)/transformations/add/[type]/page.js"
     ]
   }
 }
