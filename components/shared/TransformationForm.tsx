@@ -184,7 +184,7 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
                     formLabel="Image title"
                     className="w-full"
                     render={({ field }) => <Input {...field}
-                        className="Input-field" />}
+                        className="input-field" />}
                 />
                 {type === 'fill' && (
                     <CustomField
